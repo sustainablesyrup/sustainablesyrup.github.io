@@ -1,0 +1,98 @@
+/* 全局设置 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* 三栏结构 */
+.container {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  height: 100vh;
+}
+
+/* 左栏 */
+.sidebar {
+  padding: 15px;
+  font-size: 13px;
+  line-height: 1.4;
+  border-right: 1px solid black;
+}
+
+.sidebar h1 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.menu {
+  font-weight: bold;
+  text-align: right;
+  margin: 15px 0 3px 0;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+
+.sidebar li {
+  margin: 2px 0;
+}
+
+.sidebar a {
+  text-decoration: underline;
+  color: blue;
+}
+
+.sidebar a:hover {
+  text-decoration: none;
+}
+
+/* 中间主栏 */
+.main {
+  padding: 5px 40px 10px 40px; /* 上、右、下、左 */
+  overflow-y: auto;
+  border-right: 1px solid black;
+}
+
+.main h1 {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+/* 视频 */
+iframe {
+  display: block;
+  margin: 5px 0 10px 0; /* 缩小标题与视频间距 */
+  width: 100%;
+  border: 0;
+}
+
+/* 右栏 */
+.rightbar {
+  padding: 5px 15px 5px 8px;
+  font-size: 13px;
+}
+
+.rightbar ul {
+  padding-left: 10px;
+  margin: 0;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+
+
+/* 诗歌或长文 */
+pre {
+  font-family: "Times New Roman", Georgia, serif; 
+  font-size: 17px;      
+  line-height: 1.1;     
+  white-space: pre-wrap; 
+  word-wrap: break-word; 
+  text-align: left;      
+  max-width: 740px;      
+  margin: 10px 0;       
+}

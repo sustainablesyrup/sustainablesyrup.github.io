@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Ruoxi Wang</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div id="leftbar" class="sidebar"></div>
+
+    <div class="main">
+           
+     <p> <strong>Linearity is a kind of shallow water—sometimes exposed at low tide, sometimes submerged at high.</strong> </p>
+     <p> This is the website of Ruoxi Wang, conceived as a retreating space within the constraints of the web medium—an attempt to sketch the topography of that shallow water.</p>
+
+     <p>Ruoxi Wang is an artist and writer whose practice revolves around endurance and movement through space. She is also a transgender woman. Born in 2000 and raised in Nanjing, she received her MFA in Visual Art from the University of California, Riverside, and B.A. in Anthropology and Studio Art from the University of Minnesota.</p>
+    </div>
+
+    <div id="rightbar" class="rightbar"></div>
+  </div>
+
+  <script>
+    Promise.all([
+      fetch("../leftbar.html").then(r => r.text()),
+      fetch("../rightbar.html").then(r => r.text())
+    ]).then(([left, right]) => {
+      document.getElementById("leftbar").innerHTML = left;
+      document.getElementById("rightbar").innerHTML = right;
+    }).catch(err => console.error("加载sidebar失败：", err));
+  </script>
+</body>
+</html>

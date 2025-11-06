@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Ruoxi Wang</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div id="leftbar" class="sidebar"></div>
+
+    <div class="main">
+     <pre><H1>Revelation of Food</H1>       
+He’s in a small room,
+seems to be hiding,
+takes out three bombs the size of steamed rice balls,
+lights them,
+shoves them under a hole.
+
+The gardening teacher once told us,
+put flowers where there are cracks,
+put grass where there are holes,
+big grass—
+Cantonese bok choy.
+
+On the air vent,
+sits a yellow box,
+looks like a delivery order,
+thin white smoke,
+drifts from the explosives at the hole,
+into that delivery box.
+
+A winter afternoon, four o’clock,
+passing through the stairs beside the pomelo trees,
+at the school gate someone sells bento,
+limited time only,
+fifteen minutes.
+
+I saw it—
+there are really food,
+steaming rice,
+vegetables,
+tofu.
+
+I asked the person standing there,
+“Are you selling them?”
+He said he’s just a teacher.
+
+I wanted to steal a lunch box.
+Then thought, maybe not.
+
+Looked at the price again—
+fifteen yuan to be full,
+rice cakes twenty-eight for twenty-eight,
+I wanted those too.
+
+Behind the door on the left was my math teacher,
+I ran there,
+kept closing the door in front of her,
+then waited for it to open again.
+I saw her daughter walking through the school gate,
+maybe she was watching her daughter.
+
+I turned to the glass on the right,
+printed on it was a rap lyric,
+the lyric was bad,
+I don't know what to say.
+
+     </pre>
+
+    </div>
+
+    <div id="rightbar" class="rightbar"></div>
+  </div>
+
+  <script>
+    Promise.all([
+      fetch("../leftbar.html").then(r => r.text()),
+      fetch("../rightbar.html").then(r => r.text())
+    ]).then(([left, right]) => {
+      document.getElementById("leftbar").innerHTML = left;
+      document.getElementById("rightbar").innerHTML = right;
+    }).catch(err => console.error("加载sidebar失败：", err));
+  </script>
+</body>
+</html>

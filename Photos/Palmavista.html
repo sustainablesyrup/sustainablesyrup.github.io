@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruoxi Wang</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div id="leftbar" class="sidebar"></div>
+    <div class="main">
+   <h1>Palmavista</h1>
+   <div class="gallery"> 
+<img src="/Images/Palmavista_1200/01.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/02.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/03.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/04.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/05.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/06.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/07.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/08.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/09.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/10.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/11.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/12.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/13.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/14.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/15.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/16.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/17.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/18.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/19.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/20.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/21.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/22.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/23.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/24.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/25.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/26.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/27.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/28.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/29.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/30.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/31.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/32.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/33.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/34.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/35.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/36.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/37.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/38.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/39.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/40.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/41.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/42.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/43.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/44.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/45.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/46.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/47.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/48.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/49.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/50.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/51.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/52.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/53.jpg" loading="lazy">
+<img src="/Images/Palmavista_1200/54.jpg" loading="lazy">
+ </div> 
+ <style> .gallery { display: grid; 
+ grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; } 
+ .gallery img { width: 100%; height: auto; cursor: pointer; } </style>
+    </div>
+
+    <div id="rightbar" class="rightbar"></div>
+  </div>
+
+  <script>
+    Promise.all([
+      fetch("../leftbar.html").then(r => r.text()),
+      fetch("../rightbar.html").then(r => r.text())
+    ]).then(([left, right]) => {
+      document.getElementById("leftbar").innerHTML = left;
+      document.getElementById("rightbar").innerHTML = right;
+    }).catch(err => console.error("sidebar failed：", err));
+  </script>
+  
+<script>
+  const gallery = document.getElementById('gallery');
+  const images = Array.from(gallery.children);
+  // 打乱顺序（Fisher-Yates shuffle）
+  for (let i = images.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    gallery.appendChild(images[j]);
+    images.splice(j, 1);
+  }
+</script>
+</body>
+</html>

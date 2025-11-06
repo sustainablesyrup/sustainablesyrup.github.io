@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Ruoxi Wang</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div id="leftbar" class="sidebar"></div>
+
+    <div class="main">
+      <h2>Contact</h2>
+      <p>You can reach Ruoxi Wang through the following channels:</p>
+
+      <ul style="list-style: none; padding-left: 0; line-height: 1.6;">
+        <li><strong>Email:</strong> <a href="mailto:sustainablesyrup@gmail.com">sustainablesyrup@gmail.com</a></li>
+        <li><strong>Instagram:</strong> <a href="https://instagram.com/sustainablesyrup" target="_blank">@sustainablesyrup</a></li>
+        <li><strong>小红书：</strong> 可持续糖浆</li>
+        <li><strong>Session Messenger ID:</strong>05ab03cfbcf9f0898d5022e5bdb51ab2db345bc0458d6ab308d546363f158c9756</li>
+      </ul>
+
+      <p> Feel free to use Session Messenger for encrypted communication when needed.</p>
+    </div>
+
+    <div id="rightbar" class="rightbar"></div>
+  </div>
+
+  <script>
+    Promise.all([
+      fetch("../leftbar.html").then(r => r.text()),
+      fetch("../rightbar.html").then(r => r.text())
+    ]).then(([left, right]) => {
+      document.getElementById("leftbar").innerHTML = left;
+      document.getElementById("rightbar").innerHTML = right;
+    }).catch(err => console.error("加载sidebar失败：", err));
+  </script>
+</body>
+</html>
