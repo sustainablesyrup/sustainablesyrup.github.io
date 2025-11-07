@@ -1,9 +1,18 @@
+
 /* 全局设置 */
-body {
+html, body {
   margin: 0;
   padding: 0;
+  overflow-x: hidden; /* 禁止整个页面横向滚动 */
+  box-sizing: border-box;
   font-family: "Times New Roman", sans-serif;
 }
+
+/* 确保所有元素宽度计算包含padding */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
 
 /* ---- 桌面端（默认） ---- */
 .container {
@@ -152,7 +161,7 @@ body {
 
 /* 中间主栏 */
 .main {
-  padding: 5px 20px 10px 20px; /* 上、右、下、左 */
+  padding: 5px 5px 5px 5px; /* 上、右、下、左 */
   overflow-y: auto;
   border-right: 1px solid black;
   border-left: 1px solid black;
