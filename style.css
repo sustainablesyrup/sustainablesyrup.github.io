@@ -52,13 +52,13 @@ html, body {
   }
   .top-section {
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 60% 0% 40%;
     min-width: 0; 
-    gap: 2px;
+    gap: 0px;
     width: 100%;
     max-height: 35vh;     
     box-sizing: border-box;
-    padding: 2px;
+    padding: 0px;
     background: transparent; 
     overflow-y: scroll; 
   scrollbar-width: thin; 
@@ -104,14 +104,14 @@ html, body {
 }
 
 .sidebar h1 {
-  font-size: 20px;
+  font-size: 22px;
   margin-bottom: 10px;
 }
 
 .menu {
   font-weight: bold;
   text-align: right;
-  margin: 10px 0 3px 0;
+  margin: 10px 0 0 0;
 }
 
 .sidebar ul {
