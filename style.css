@@ -44,17 +44,17 @@ body {
     width: 100%;
     max-width: 600px;              /* 限制整体宽度（可选） */
     margin: 0 auto;                /* 居中页面 */
-    gap: 16px;
+    gap: 0px;
   }
 
   /* top-section 在移动端变成 2 列 grid（只包含左右两栏） */
   .top-section {
     display: grid;
-    grid-template-columns: 70% 30%; /* 两列：sidebar | rightbar */
+    grid-template-columns: 70vw 30vw; /* 两列：sidebar | rightbar */
     gap: 2px;
     width: 100%;
     /* 限制高度：可以用 max-height 控制顶部 grid 的高度，并允许内部滚动 */
-    max-height: 40vh;       /* 顶部区域最多占 40% 视口高度（可按需调整） */
+    max-height: 35vh;       /* 顶部区域最多占 40% 视口高度（可按需调整） */
     box-sizing: border-box;
     padding: 4px;
     background: transparent; /* 可自定义背景 */
@@ -91,7 +91,7 @@ body {
   left: 0;
   width: 100%;
   height: 16px;
-  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1));
+  background: linear-gradient(to bottom, transparent, rgb(216, 216, 216));
   pointer-events: none;
 }
   
