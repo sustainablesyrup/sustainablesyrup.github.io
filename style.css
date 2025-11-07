@@ -2,16 +2,79 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: "Times New Roman", sans-serif;
 }
 
-/* 三栏结构 */
+/* ---- 桌面端（默认） ---- */
 .container {
   display: grid;
-  grid-template-columns: 200px 1fr 200px;
+  grid-template-columns: 200px 1fr 150px;
+  grid-template-rows: 1fr; /* 单行三列 */
   height: 100vh;
+  gap: 0;
+}
+/* 为兼容性：桌面时把 top-section 变成占左+右两格（隐式） */
+.top-section {
+  /* 在桌面模式下 top-section 其实不是直接显示的行列容器
+     我们让 sidebar/rightbar 分别单独占 grid 的第一列和第三列 */
+  display: contents; /* 使 .sidebar 和 .rightbar 成为 container grid 的直接子项 */
 }
 
+/* 让 sidebar / main / rightbar 占据桌面网格的三列位置 */
+.sidebar {
+  grid-column: 1;
+  grid-row: 1;
+}
+.main {
+  grid-column: 2;
+  grid-row: 1;
+}
+.rightbar {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+/* ---- 移动端（自定义阈值，可改） ---- */
+@media (max-width: 768px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;    /* 整体一列：上面一个块（top-section），下面 main */
+    grid-template-rows: auto 1fr;  /* 上 auto（由 top-section 决定），下为 main 占剩余 */
+    height: auto;                  /* 根据内容自适应，或改成 100vh 如果你想撑满屏 */
+    width: 100%;
+    max-width: 600px;              /* 限制整体宽度（可选） */
+    margin: 0 auto;                /* 居中页面 */
+    gap: 16px;
+  }
+
+  /* top-section 在移动端变成 2 列 grid（只包含左右两栏） */
+  .top-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 两列：sidebar | rightbar */
+    gap: 12px;
+    width: 100%;
+    /* 限制高度：可以用 max-height 控制顶部 grid 的高度，并允许内部滚动 */
+    max-height: 40vh;       /* 顶部区域最多占 40% 视口高度（可按需调整） */
+    overflow: auto;         /* 内容超出时可滚动 */
+    box-sizing: border-box;
+    padding: 8px;
+    background: transparent; /* 可自定义背景 */
+  }
+
+  /* 在移动端，sidebar/rightbar 在 top-section 内天然处于两列 */
+  .sidebar, .rightbar {
+    grid-auto-rows: min-content;
+    min-height: 0;           /* 避免 flex/grid 行高塌陷问题 */
+  }
+
+  /* main 放在 .container 的下一行，向下延伸 */
+  .main {
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    /* 如果你想 main 占满剩余高度（例如页面固定为 100vh），可以设置 min-height: calc(100vh - 顶部高度) */
+  }
+}
 /* 左栏 */
 .sidebar {
   padding: 10px;
@@ -51,7 +114,7 @@ body {
 
 /* 中间主栏 */
 .main {
-  padding: 5px 40px 10px 40px; /* 上、右、下、左 */
+  padding: 5px 20px 10px 20px; /* 上、右、下、左 */
   overflow-y: auto;
   border-right: 1px solid black;
   border-left: 1px solid black;
@@ -61,6 +124,8 @@ body {
   margin-top: 5px;
   margin-bottom: 10px;
 }
+
+img { max-width: 100%; height: auto; display: block; }
 
 /* 视频 */
 iframe {
@@ -72,7 +137,7 @@ iframe {
 
 /* 右栏 */
 .rightbar {
-  padding: 5px 15px 5px 8px;
+  padding: 5px 8px 5px 8px;
   font-size: 13px;
 }
 
@@ -84,15 +149,9 @@ iframe {
 .rightbar ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 10px 0;
-
-.rightbar ul {
-  padding-left: 10px;
-  margin: 0;
+  margin: 0 0 0 0;
+  padding-left: 0px;
 }
-
-img { max-width: 100%; height: auto; display: block; }
-
 
 
 /* 诗歌或长文 */
@@ -107,49 +166,3 @@ pre {
   margin: 10px 0;       
 }
 
-/* ---- 不改 HTML，只用 CSS 在移动端重排 ---- */
-.container {
-  /* 确保 desktop 时有明确命名区域（保持现状） */
-  display: grid;
-  grid-template-columns: 200px 1fr 200px;
-  grid-template-rows: 1fr;
-  grid-template-areas: "sidebar main right";
-}
-
-/* 绑定区域名到各栏（不会改变视觉，便于 mobile 重排） */
-.sidebar { grid-area: sidebar; }
-.main    { grid-area: main; }
-.rightbar{ grid-area: right; }
-
-/* 移动端重排：上排左右两个栏；下排主区 */
-@media (max-width: 768px) {
-  .container {
-    grid-template-columns: 1fr 1fr;           /* 两列，上排并列 */
-    grid-template-rows: auto 1fr;             /* 第一行是左右栏，高度自适；第二行主区 */
-    grid-template-areas:
-      "sidebar right"
-      "main main";
-    height: auto;                             /* 取消 100vh，避免强制高度 */
-  }
-
-  .sidebar {
-    border-right: 1px solid black;            /* 左右中间竖线 */
-    border-bottom: none;                      /* 上层有竖线，不要底线 */
-    padding: 10px 15px;
-  }
-
-  .rightbar {
-    padding: 10px 15px;
-    border-left: none;                        /* 避免重复线条 */
-  }
-
-  .main {
-    padding: 15px;
-    border-right: none;
-    border-top: 1px solid black;              /* 可选：主区与上排分隔的横线 */
-  }
-
-  /* 小屏微调 */
-  iframe { margin: 10px 0; }
-  pre { font-size: 16px; line-height: 1.3; }
-}
