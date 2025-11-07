@@ -59,7 +59,7 @@ html, body {
   /* top-section 在移动端变成 2 列 grid（只包含左右两栏） */
   .top-section {
     display: grid;
-    grid-template-columns: 3fr 1fr; /* 两列：sidebar | rightbar */
+    grid-template-columns: 400px 150px; /* 两列：sidebar | rightbar */
     gap: 2px;
     width: 100%;
     /* 限制高度：可以用 max-height 控制顶部 grid 的高度，并允许内部滚动 */
@@ -93,16 +93,6 @@ html, body {
 
 .top-section::-webkit-scrollbar-track {
   background: transparent;
-}
-.top-section::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 16px;
-  background: linear-gradient(to bottom, transparent, rgb(216, 216, 216));
-  pointer-events: none;
 }
   
 
