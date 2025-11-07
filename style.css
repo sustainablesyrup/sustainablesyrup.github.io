@@ -50,15 +50,16 @@ body {
   /* top-section 在移动端变成 2 列 grid（只包含左右两栏） */
   .top-section {
     display: grid;
-    grid-template-columns: 70vw 30vw; /* 两列：sidebar | rightbar */
+    grid-template-columns: 2fr 1fr; /* 两列：sidebar | rightbar */
     gap: 2px;
     width: 100%;
     /* 限制高度：可以用 max-height 控制顶部 grid 的高度，并允许内部滚动 */
     max-height: 35vh;       /* 顶部区域最多占 40% 视口高度（可按需调整） */
     box-sizing: border-box;
-    padding: 4px;
+    padding: 2px;
     background: transparent; /* 可自定义背景 */
     overflow-y: scroll; /* 开启纵向滚动 */
+    overflow-x: hidden;
   scrollbar-width: thin; /* Firefox：细滚动条 */
   scrollbar-color: rgba(0,0,0,0.3) transparent; /* Firefox：滚动条颜色 */
 }
