@@ -9,9 +9,8 @@
 </head>
 
 <body>
-  <div class="container">
-    <div id="leftbar" class="sidebar"></div>
-
+   <div class="container">
+    <div id="sidebar" class="sidebar"></div>
     <div class="main">
      <pre><H1>BwO and Target</H1>      
     The search for coffee in St. Louis did not go smoothly. I stopped by a few gas stations, but the stores were all closed. I realized that this stop-and-go pattern at gas stations was especially draining—it consumed energy, brought frustration, and made me feel exhausted. Eventually, I found a 7-Eleven. Parked in front, I drank the drip coffee greedily, smoked a cigarette, and tried to comprehend my body in the cold wind.
@@ -49,10 +48,10 @@
 
   <script>
     Promise.all([
-      fetch("../leftbar.html").then(r => r.text()),
+      fetch("../sidebar.html").then(r => r.text()),
       fetch("../rightbar.html").then(r => r.text())
     ]).then(([left, right]) => {
-      document.getElementById("leftbar").innerHTML = left;
+      document.getElementById("sidebar").innerHTML = left;
       document.getElementById("rightbar").innerHTML = right;
     }).catch(err => console.error("加载sidebar失败：", err));
   </script>

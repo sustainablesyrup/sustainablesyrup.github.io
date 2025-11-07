@@ -9,9 +9,8 @@
 </head>
 
 <body>
-  <div class="container">
-    <div id="leftbar" class="sidebar"></div>
-
+     <div class="container">
+    <div id="sidebar" class="sidebar"></div>
     <div class="main">
      <pre><H1>Christmas Shooter</H1>       
 I never thought I'd return to old home,
@@ -68,10 +67,10 @@ only for the sake of killing.
 
   <script>
     Promise.all([
-      fetch("../leftbar.html").then(r => r.text()),
+      fetch("../sidebar.html").then(r => r.text()),
       fetch("../rightbar.html").then(r => r.text())
     ]).then(([left, right]) => {
-      document.getElementById("leftbar").innerHTML = left;
+      document.getElementById("sidebar").innerHTML = left;
       document.getElementById("rightbar").innerHTML = right;
     }).catch(err => console.error("加载sidebar失败：", err));
   </script>

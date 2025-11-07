@@ -8,11 +8,9 @@
 </head>
 
 <body>
-  <div class="container">
-    <div id="leftbar" class="sidebar"></div>
-
-    <div class="main">
-           
+     <div class="container">
+    <div id="sidebar" class="sidebar"></div>
+    <div class="main">  
     <h1>Rollover</h1>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
   <iframe src="https://player.vimeo.com/video/1132581597"
@@ -29,10 +27,10 @@
 
   <script>
     Promise.all([
-      fetch("../leftbar.html").then(r => r.text()),
+      fetch("../sidebar.html").then(r => r.text()),
       fetch("../rightbar.html").then(r => r.text())
     ]).then(([left, right]) => {
-      document.getElementById("leftbar").innerHTML = left;
+      document.getElementById("sidebar").innerHTML = left;
       document.getElementById("rightbar").innerHTML = right;
     }).catch(err => console.error("加载sidebar失败：", err));
   </script>

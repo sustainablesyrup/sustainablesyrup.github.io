@@ -14,21 +14,20 @@ body {
 
 /* 左栏 */
 .sidebar {
-  padding: 15px;
+  padding: 10px;
   font-size: 13px;
   line-height: 1.4;
-  border-right: 1px solid black;
 }
 
 .sidebar h1 {
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 10px;
 }
 
 .menu {
   font-weight: bold;
   text-align: right;
-  margin: 15px 0 3px 0;
+  margin: 10px 0 3px 0;
 }
 
 .sidebar ul {
@@ -38,12 +37,12 @@ body {
 }
 
 .sidebar li {
-  margin: 2px 0;
+  margin: 0px 0;
 }
 
 .sidebar a {
-  text-decoration: underline;
-  color: blue;
+  text-decoration: none;
+  color: rgb(0, 0, 255);
 }
 
 .sidebar a:hover {
@@ -55,6 +54,7 @@ body {
   padding: 5px 40px 10px 40px; /* 上、右、下、左 */
   overflow-y: auto;
   border-right: 1px solid black;
+  border-left: 1px solid black;
 }
 
 .main h1 {
@@ -75,6 +75,16 @@ iframe {
   padding: 5px 15px 5px 8px;
   font-size: 13px;
 }
+
+.rightbar a {
+  text-decoration: none;
+  color: rgb(0, 0, 255);
+}
+
+.rightbar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0;
 
 .rightbar ul {
   padding-left: 10px;
@@ -97,35 +107,49 @@ pre {
   margin: 10px 0;       
 }
 
-/* —— 响应式布局（移动端） —— */
+/* ---- 不改 HTML，只用 CSS 在移动端重排 ---- */
+.container {
+  /* 确保 desktop 时有明确命名区域（保持现状） */
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: 1fr;
+  grid-template-areas: "sidebar main right";
+}
+
+/* 绑定区域名到各栏（不会改变视觉，便于 mobile 重排） */
+.sidebar { grid-area: sidebar; }
+.main    { grid-area: main; }
+.rightbar{ grid-area: right; }
+
+/* 移动端重排：上排左右两个栏；下排主区 */
 @media (max-width: 768px) {
   .container {
-    grid-template-columns: 1fr; /* 单列布局 */
-    grid-template-rows: auto 1fr; /* 上下结构 */
-    height: auto;
+    grid-template-columns: 1fr 1fr;           /* 两列，上排并列 */
+    grid-template-rows: auto 1fr;             /* 第一行是左右栏，高度自适；第二行主区 */
+    grid-template-areas:
+      "sidebar right"
+      "main main";
+    height: auto;                             /* 取消 100vh，避免强制高度 */
   }
 
   .sidebar {
-    border-right: none;
-    border-bottom: 1px solid black;
+    border-right: 1px solid black;            /* 左右中间竖线 */
+    border-bottom: none;                      /* 上层有竖线，不要底线 */
     padding: 10px 15px;
+  }
+
+  .rightbar {
+    padding: 10px 15px;
+    border-left: none;                        /* 避免重复线条 */
   }
 
   .main {
     padding: 15px;
     border-right: none;
+    border-top: 1px solid black;              /* 可选：主区与上排分隔的横线 */
   }
 
-  .rightbar {
-    display: none; /* 隐藏右栏 */
-  }
-
-  iframe {
-    margin: 10px 0;
-  }
-
-  pre {
-    font-size: 16px;
-    line-height: 1.3;
-  }
+  /* 小屏微调 */
+  iframe { margin: 10px 0; }
+  pre { font-size: 16px; line-height: 1.3; }
 }

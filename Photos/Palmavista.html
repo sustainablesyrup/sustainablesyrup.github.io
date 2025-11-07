@@ -8,8 +8,8 @@
 </head>
 
 <body>
-  <div class="container">
-    <div id="leftbar" class="sidebar"></div>
+    <div class="container">
+    <div id="sidebar" class="sidebar"></div>
     <div class="main">
    <h1>Palmavista</h1>
    <div class="gallery"> 
@@ -78,10 +78,10 @@
 
   <script>
     Promise.all([
-      fetch("../leftbar.html").then(r => r.text()),
+      fetch("../sidebar.html").then(r => r.text()),
       fetch("../rightbar.html").then(r => r.text())
     ]).then(([left, right]) => {
-      document.getElementById("leftbar").innerHTML = left;
+      document.getElementById("sidebar").innerHTML = left;
       document.getElementById("rightbar").innerHTML = right;
     }).catch(err => console.error("sidebar failed：", err));
   </script>
