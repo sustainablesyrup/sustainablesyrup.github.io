@@ -165,7 +165,7 @@ html, body {
 
 /* 中间主栏 */
 .main {
-  padding: 5px 15px 5px 15px; /* 上、右、下、左 */
+  padding: 5px 20px 5px 20px; /* 上、右、下、左 */
   overflow-y: auto;
   border-right: 1px solid black;
   border-left: 1px solid black;
@@ -192,13 +192,17 @@ iframe {
 
 /* 诗歌或长文 */
 pre {
-  font-family: "Times New Roman", Georgia, serif; 
-  font-size: 17px;      
-  line-height: 1.1;     
-  white-space: pre-wrap; 
-  word-wrap: break-word; 
-  text-align: left;      
-  max-width: 740px;      
-  margin: 10px 0;       
+  font-family: "Times New Roman", Georgia, "Songti SC", "SimSun", serif; /* 加中文宋体 */
+  font-size: 16px;
+  line-height: 1.5;       /* 行距更疏，文本呼吸 */
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  text-align: left;
+  max-width: 740px;
+  margin: 15px 0 20px 0;   /* 段前后多留空 */
+  background: transparent;   /* 或淡灰，若想模拟纸感 */
+  letter-spacing: 0.3px;      /* 字间微扩张，视觉更柔 */
+  font-variant-ligatures: common-ligatures; /* 更自然的西文字体连接 */
 }
+
 
