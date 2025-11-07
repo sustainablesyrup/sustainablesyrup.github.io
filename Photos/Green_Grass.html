@@ -59,8 +59,8 @@
       fetch("../leftbar.html").then(r => r.text()),
       fetch("../rightbar.html").then(r => r.text())
     ]).then(([left, right]) => {
-      document.getElementByid("leftbar").innerHTML = left;
-      document.getElementByid("rightbar").innerHTML = right;
+      document.getElementById("leftbar").innerHTML = left;
+      document.getElementById("rightbar").innerHTML = right;
     }).catch(err => console.error("加载sidebar失败：", err));
   </script>
 </body>
