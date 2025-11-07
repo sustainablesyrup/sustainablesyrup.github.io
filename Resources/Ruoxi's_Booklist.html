@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Ruoxi Wang</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div id="leftbar" class="sidebar"></div>
+
+    <div class="main">
+     <pre><strong>Ruoxi's reading list</strong>
+
+<strong>气候型理论</strong>
+1. Rosalind Krauss, Passages in Modern Sculpture, 1977
+2. Rosalind Krauss, Sculpture in the Expanded Field, 1979
+3. Rosalind Krauss, Voyage on the North Sea: Art in the Age of the Post-Medium Condition, 1999
+4. Gilles Deleuze, A Thousand Plateau, 1980 
+5. Susan Sontag, Against Interpretation, 1966.
+1. Jean Baudrillard, Simulacra and Simulation, 1981
+2. Vilém Flusser, Towards a Philosophy of Photography, 1983
+3. Paul Virilio, The Vision Machine, 1988
+4. Hito Steyerl, The Wretched of the Screen, 2012
+5. Paul Virilio, Speed and Politics, 1977
+
+<strong>宣言类</strong>
+1. Valerie Solanas, SCUM Manifesto, 1967
+2. Donna Haraway, A Cyborg Manifesto, 1985
+3. Laboria Cuboniks, Xenofeminism: A Politics for Alienation, 2015
+
+<strong>女性主义/酷儿/活动/自传理论</strong>
+1. Paul B. Preciado, Testo Junkie, 2008
+2. Maggie Nelson, The Argonauts, 2015
+3. Chris Kraus, I Love Dick, 1997
+4. Kate Zambreno, Heroines, 2012
+
+<strong>绘画</strong>
+
+<strong>摄影/雕塑/装置/painting/媒体</strong>
+
+<strong>表演/音乐/诗歌</strong>
+
+<strong>小理论</strong>
+1. Ian Bogost, Alien Phenomenology, 2012
+2. Anna Lowenhaupt Tsing, The Mushroom at the End of the World , 2015
+1. Jack Halberstam, The Queer Art of Failure, 2011
+2. Yve-Alain Bois & Rosalind Krauss, Formless: A User’s Guide, 1997
+3. Audre Lorde, The Master’s Tools Will Never Dismantle the Master’s House, 1984
+4. Audre Lorde, Uses of the Erotic: The Erotic as Power, 1978
+5. Sarah Schulman, Let the Record Show: A Political History of ACT UP New York, 1987–1993, 2021
+6. Timothy Morton, Dark Ecology, 2016
+7. Miljohn Ruperto, An Operational Account of Western Spatio-Temporality, 2024
+8. Reza Negarestani, Cyclonopedia, 2008
+9. Sara Ahmed, Complaint!, 2021
+
+<strong>大地艺术/生态/建筑</strong>
+1. Robert Smithson, Spiral Jetty, 1970
+2. James Turrell, Roden Crater, 1977
+3. Walter De Maria, The Lightning Field, 1977
+4. Micheal Heizer, Double Negative, 1970
+5. Micheal Heizer, City, 2022
+6. Olafur Eliasson, The Weather Project, 2003
+7. James Turrell, Skyspaces, 1974-
+
+<strong>机构批判/Site Specific</strong>
+
+
+
+     </pre>
+
+    </div>
+
+    <div id="rightbar" class="rightbar"></div>
+  </div>
+
+  <script>
+    Promise.all([
+      fetch("../leftbar.html").then(r => r.text()),
+      fetch("../rightbar.html").then(r => r.text())
+    ]).then(([left, right]) => {
+      document.getElementById("leftbar").innerHTML = left;
+      document.getElementById("rightbar").innerHTML = right;
+    }).catch(err => console.error("加载sidebar失败：", err));
+  </script>
+</body>
+</html>
