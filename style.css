@@ -60,16 +60,24 @@ html, body {
   .top-section {
     display: grid;
     grid-template-columns: 3fr 2fr; /* 两列：sidebar | rightbar */
+    min-width: 0; 
     gap: 2px;
-    width: 80%;
-    /* 限制高度：可以用 max-height 控制顶部 grid 的高度，并允许内部滚动 */
-    max-height: 35vh;       /* 顶部区域最多占 40% 视口高度（可按需调整） */
+    width: 100%;
+    max-height: 35vh;     
     box-sizing: border-box;
     padding: 2px;
     background: transparent; /* 可自定义背景 */
     overflow-y: scroll; /* 开启纵向滚动 */
   scrollbar-width: thin; /* Firefox：细滚动条 */
   scrollbar-color: rgba(0,0,0,0.3) transparent; /* Firefox：滚动条颜色 */
+}
+.top-section img,
+.sidebar img,
+.rightbar img {
+  max-width: 100%;
+  height: auto;
+  display: block;   /* 去除下方空隙，行为更 predictible */
+  object-fit: cover; /* 根据需要，可改为 contain */
 }
 
 /* Chrome / Edge / Safari (WebKit) 的滚动条样式 */
