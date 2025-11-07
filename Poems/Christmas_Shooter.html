@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Ruoxi Wang</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div id="leftbar" class="sidebar"></div>
+
+    <div class="main">
+     <pre><H1>Christmas Shooter</H1>       
+I never thought I'd return to old home,
+but here I am.
+A dim night.
+In the bedroom corner, a few boxes of snacks,
+a tin of biscuits writes 8646.
+Beneath the box, another one—
+perhaps for some holiday,
+maybe Christmas.
+
+My hair is thick.
+The friends in the room
+say we should all go out and make love,
+but I’m in the shower,
+my hair tangled.
+
+Outside the window,
+a gray car pulls away slowly.
+I don’t know whose it is.
+
+I think about sending a text,
+asking someone out,
+but don’t know whom to send.
+
+A man walks in, holding a gun.
+I go out the door.
+Between the cars and the security booth,
+I hesitate,
+then choose the booth,
+to tell them about the man with the gun.
+
+There are three guards.
+One of them makes the closed door ajar,
+as if that would make the conversation safer.
+
+The man suddenly leans in through the door,
+a double-barreled gun
+aimed at me—
+one shot,
+two shots.
+
+I think for a moment.
+Perhaps I misread him.
+He killed
+only for the sake of killing.
+
+     </pre>
+
+    </div>
+
+    <div id="rightbar" class="rightbar"></div>
+  </div>
+
+  <script>
+    Promise.all([
+      fetch("../leftbar.html").then(r => r.text()),
+      fetch("../rightbar.html").then(r => r.text())
+    ]).then(([left, right]) => {
+      document.getElementById("leftbar").innerHTML = left;
+      document.getElementById("rightbar").innerHTML = right;
+    }).catch(err => console.error("加载sidebar失败：", err));
+  </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruoxi Wang</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div id="leftbar" class="sidebar"></div>
+    <div class="main">
+   <h1>Drink that Syrup Tonight</h1>
+      <img
+  src="/images/Drink_that_Syrup_Tonight/1.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/2.jpg"
+  loading="lazy" 
+  alt="...">
+      <img
+  src="/images/Drink_that_Syrup_Tonight/3.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/4.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/5.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/6.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/7.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/8.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/9.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/10.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/11.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/12.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/13.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/14.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/15.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/16.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/17.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/18.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/19.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/20.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/21.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/22.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/23.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/24.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/25.jpg"
+  loading="lazy" 
+  alt="...">
+        <img
+  src="/images/Drink_that_Syrup_Tonight/26.jpg"
+  loading="lazy" 
+  alt="...">
+    </div>
+
+    <div id="rightbar" class="rightbar"></div>
+  </div>
+
+  <script>
+    Promise.all([
+      fetch("../leftbar.html").then(r => r.text()),
+      fetch("../rightbar.html").then(r => r.text())
+    ]).then(([left, right]) => {
+      document.getElementById("leftbar").innerHTML = left;
+      document.getElementById("rightbar").innerHTML = right;
+    }).catch(err => console.error("sidebar failed：", err));
+  </script>
+</body>
+</html>
