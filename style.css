@@ -50,8 +50,8 @@ body {
   /* top-section 在移动端变成 2 列 grid（只包含左右两栏） */
   .top-section {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 两列：sidebar | rightbar */
-    gap: 12px;
+    grid-template-columns: 70% 30%; /* 两列：sidebar | rightbar */
+    gap: 2px;
     width: 100%;
     /* 限制高度：可以用 max-height 控制顶部 grid 的高度，并允许内部滚动 */
     max-height: 40vh;       /* 顶部区域最多占 40% 视口高度（可按需调整） */
@@ -59,7 +59,35 @@ body {
     box-sizing: border-box;
     padding: 8px;
     background: transparent; /* 可自定义背景 */
-  }
+    overflow-y: scroll; /* 开启纵向滚动 */
+  scrollbar-width: thin; /* Firefox：细滚动条 */
+  scrollbar-color: rgba(0,0,0,0.3) transparent; /* Firefox：滚动条颜色 */
+}
+
+/* Chrome / Edge / Safari (WebKit) 的滚动条样式 */
+.top-section::-webkit-scrollbar {
+  width: 6px; /* 滚动条宽度 */
+}
+
+.top-section::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 3px;
+}
+
+.top-section::-webkit-scrollbar-track {
+  background: transparent;
+}
+.top-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.1));
+  pointer-events: none;
+}
+  
 
   /* 在移动端，sidebar/rightbar 在 top-section 内天然处于两列 */
   .sidebar, .rightbar {
@@ -75,6 +103,8 @@ body {
     /* 如果你想 main 占满剩余高度（例如页面固定为 100vh），可以设置 min-height: calc(100vh - 顶部高度) */
   }
 }
+
+
 /* 左栏 */
 .sidebar {
   padding: 10px;
