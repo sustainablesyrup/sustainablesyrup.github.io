@@ -3,33 +3,28 @@
 html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* 禁止整个页面横向滚动 */
+  overflow-x: hidden; 
   box-sizing: border-box;
   font-family: "Times New Roman", sans-serif;
 }
 
-/* 确保所有元素宽度计算包含padding */
 *, *::before, *::after {
   box-sizing: inherit;
 }
 
 
-/* ---- 桌面端（默认） ---- */
+/* ---- 桌面端 ---- */
 .container {
   display: grid;
   grid-template-columns: 200px 1fr 150px;
-  grid-template-rows: 1fr; /* 单行三列 */
+  grid-template-rows: 1fr; 
   height: 100vh;
   gap: 0;
 }
-/* 为兼容性：桌面时把 top-section 变成占左+右两格（隐式） */
 .top-section {
-  /* 在桌面模式下 top-section 其实不是直接显示的行列容器
-     我们让 sidebar/rightbar 分别单独占 grid 的第一列和第三列 */
-  display: contents; /* 使 .sidebar 和 .rightbar 成为 container grid 的直接子项 */
+  display: contents; 
 }
 
-/* 让 sidebar / main / rightbar 占据桌面网格的三列位置 */
 .sidebar {
   grid-column: 1;
   grid-row: 1;
@@ -43,46 +38,41 @@ html, body {
   grid-row: 1;
 }
 
-/* ---- 移动端（自定义阈值，可改） ---- */
+/* ---- 移动端 ---- */
 @media (max-width: 768px) {
   .container {
     display: grid;
-    grid-template-columns: 1fr;    /* 整体一列：上面一个块（top-section），下面 main */
-    grid-template-rows: auto 1fr;  /* 上 auto（由 top-section 决定），下为 main 占剩余 */
-    height: auto;                  /* 根据内容自适应，或改成 100vh 如果你想撑满屏 */
+    grid-template-columns: 1fr;    
+    grid-template-rows: auto 1fr;  
+    height: auto;                  
     width: 100%;
-    max-width: 600px;              /* 限制整体宽度（可选） */
-    margin: 0 auto;                /* 居中页面 */
+    max-width: 600px; 
+    margin: 0 auto;      
     gap: 0px;
   }
-
-  /* top-section 在移动端变成 2 列 grid（只包含左右两栏） */
   .top-section {
     display: grid;
-    grid-template-columns: 3fr 2fr; /* 两列：sidebar | rightbar */
+    grid-template-columns: 3fr 2fr;
     min-width: 0; 
     gap: 2px;
     width: 100%;
     max-height: 35vh;     
     box-sizing: border-box;
     padding: 2px;
-    background: transparent; /* 可自定义背景 */
-    overflow-y: scroll; /* 开启纵向滚动 */
-  scrollbar-width: thin; /* Firefox：细滚动条 */
-  scrollbar-color: rgba(0,0,0,0.3) transparent; /* Firefox：滚动条颜色 */
-}
-.top-section img,
-.sidebar img,
-.rightbar img {
+    background: transparent; 
+    overflow-y: scroll; 
+  scrollbar-width: thin; 
+  scrollbar-color: rgba(0,0,0,0.3) transparent;}
+
+.top-section img {
   max-width: 100%;
   height: auto;
-  display: block;   /* 去除下方空隙，行为更 predictible */
-  object-fit: cover; /* 根据需要，可改为 contain */
-}
+  display: block;   
+  object-fit: contain; }
 
-/* Chrome / Edge / Safari (WebKit) 的滚动条样式 */
+/* Chrome / Edge / Safari (WebKit)  */
 .top-section::-webkit-scrollbar {
-  width: 6px; /* 滚动条宽度 */
+  width: 6px; 
 }
 
 .top-section::-webkit-scrollbar-thumb {
@@ -94,19 +84,14 @@ html, body {
   background: transparent;
 }
   
-
-  /* 在移动端，sidebar/rightbar 在 top-section 内天然处于两列 */
   .sidebar, .rightbar {
     grid-auto-rows: min-content;
-    min-height: 0;           /* 避免 flex/grid 行高塌陷问题 */
+    min-height: 0;
   }
-
-  /* main 放在 .container 的下一行，向下延伸 */
   .main {
     grid-column: 1;
     grid-row: 2;
     width: 100%;
-    /* 如果你想 main 占满剩余高度（例如页面固定为 100vh），可以设置 min-height: calc(100vh - 顶部高度) */
   }
 }
 
@@ -188,6 +173,8 @@ iframe {
   margin: 0 0 0 0;
   padding-left: 0px;
 }
+
+.sidebar, .rightbar { min-width: 0; }
 
 
 /* 诗歌或长文 */
