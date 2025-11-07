@@ -59,7 +59,7 @@ html, body {
   /* top-section 在移动端变成 2 列 grid（只包含左右两栏） */
   .top-section {
     display: grid;
-    grid-template-columns: 2fr 1fr; /* 两列：sidebar | rightbar */
+    grid-template-columns: 9fr 4fr; /* 两列：sidebar | rightbar */
     gap: 2px;
     width: 100%;
     /* 限制高度：可以用 max-height 控制顶部 grid 的高度，并允许内部滚动 */
@@ -161,7 +161,7 @@ html, body {
 
 /* 中间主栏 */
 .main {
-  padding: 5px 5px 5px 5px; /* 上、右、下、左 */
+  padding: 5px 15px 5px 15px; /* 上、右、下、左 */
   overflow-y: auto;
   border-right: 1px solid black;
   border-left: 1px solid black;
