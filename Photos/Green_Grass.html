@@ -13,39 +13,39 @@
     <div class="main">   
     <h1>GreenGrass</h1>
       <img
-  src="/Images/Green_Grass/1.jpg"
+  src="/images/Green_Grass/1.jpg"
   loading="lazy" 
   alt="...">
       <img
-  src="/Images/Green_Grass/2.jpg"
+  src="/images/Green_Grass/2.jpg"
   loading="lazy" 
   alt="...">
       <img
-  src="/Images/Green_Grass/3.jpg"
+  src="/images/Green_Grass/3.jpg"
   loading="lazy" 
   alt="...">
         <img
-  src="/Images/Green_Grass/4.jpg"
+  src="/images/Green_Grass/4.jpg"
   loading="lazy" 
   alt="...">
         <img
-  src="/Images/Green_Grass/5.jpg"
+  src="/images/Green_Grass/5.jpg"
   loading="lazy" 
   alt="...">
         <img
-  src="/Images/Green_Grass/6.jpg"
+  src="/images/Green_Grass/6.jpg"
   loading="lazy" 
   alt="...">
         <img
-  src="/Images/Green_Grass/7.jpg"
+  src="/images/Green_Grass/7.jpg"
   loading="lazy" 
   alt="...">
         <img
-  src="/Images/Green_Grass/8.jpg"
+  src="/images/Green_Grass/8.jpg"
   loading="lazy" 
   alt="...">
         <img
-  src="/Images/Green_Grass/9.jpg"
+  src="/images/Green_Grass/9.jpg"
   loading="lazy" 
   alt="...">
     </div>
@@ -59,8 +59,8 @@
       fetch("../leftbar.html").then(r => r.text()),
       fetch("../rightbar.html").then(r => r.text())
     ]).then(([left, right]) => {
-      document.getElementById("leftbar").innerHTML = left;
-      document.getElementById("rightbar").innerHTML = right;
+      document.getElementByid("leftbar").innerHTML = left;
+      document.getElementByid("rightbar").innerHTML = right;
     }).catch(err => console.error("加载sidebar失败：", err));
   </script>
 </body>
