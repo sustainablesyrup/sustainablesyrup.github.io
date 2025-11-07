@@ -59,7 +59,7 @@ html, body {
   /* top-section 在移动端变成 2 列 grid（只包含左右两栏） */
   .top-section {
     display: grid;
-    grid-template-columns: 280 80px; /* 两列：sidebar | rightbar */
+    grid-template-columns: 280px 80px; /* 两列：sidebar | rightbar */
     gap: 2px;
     width: 100%;
     /* 限制高度：可以用 max-height 控制顶部 grid 的高度，并允许内部滚动 */
