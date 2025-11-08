@@ -168,13 +168,13 @@ html, body {
 .main {
   padding: 5px 20px 5px 20px; /* 上、右、下、左 */
   overflow-y: auto;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
+  border-right: /*1px solid black;*/
+  border-left: /*1px solid black;*/
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin-top: 0.6em;   /* 上方间距 */
-  margin-bottom: 0.4em; /* 下方间距 */
+  margin-top: 0em;   /* 上方间距 */
+  margin-bottom: 0em; /* 下方间距 */
 }
 
 img { max-width: 100%; height: auto; display: block; }
