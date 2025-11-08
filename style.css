@@ -173,11 +173,17 @@ html, body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin-top: 0em;   /* 上方间距 */
-  margin-bottom: 0em; /* 下方间距 */
+  margin-top: 0.2em;   /* 上方间距 */
+  margin-bottom: 0.1em; /* 下方间距 */
 }
 
 img { max-width: 100%; height: auto; display: block; }
+p {line-height: 1; /* 或稍小 */
+  margin-top:10px;    /* 或更小 */
+  margin-bottom: 24px; /* 默认通常是 16px 左右 */
+}
+
+
 
 /* 视频 */
 iframe {
@@ -200,7 +206,7 @@ pre {
   word-wrap: break-word;
   text-align: left;
   max-width: 740px;
-  margin: 15px 0 20px 0;   /* 段前后多留空 */
+  margin: 8px 0 20px 0;   /* 段前后多留空 */
   background: transparent;   /* 或淡灰，若想模拟纸感 */
   letter-spacing: 0.3px;      /* 字间微扩张，视觉更柔 */
   font-variant-ligatures: common-ligatures; /* 更自然的西文字体连接 */
