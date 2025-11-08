@@ -205,7 +205,7 @@ pre {
   white-space: pre-wrap;
   word-wrap: break-word;
   text-align: left;
-  max-width: 740px;
+  max-width:max-content;
   margin: 8px 0 20px 0;   /* 段前后多留空 */
   background: transparent;   /* 或淡灰，若想模拟纸感 */
   letter-spacing: 0.3px;      /* 字间微扩张，视觉更柔 */
