@@ -102,6 +102,9 @@ html, body {
   font-size: 13px;
   line-height: 1.4;
   min-width: 0;
+  height: 100vh;          /* 占满视口高度 */
+  overflow-y: auto;        /* 垂直方向出现滚动条 */
+  overflow-x: hidden;      /* 水平方向不滚动 */
 }
 
 .sidebar h1 {
@@ -168,8 +171,8 @@ html, body {
 .main {
   padding: 5px 20px 5px 20px; /* 上、右、下、左 */
   overflow-y: auto;
-  border-right: /*1px solid black;*/
-  border-left: /*1px solid black;*/
+  border-right: 1px solid black;
+  border-left: 1px solid black;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -177,12 +180,48 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.1em; /* 下方间距 */
 }
 
+.title-row {
+  display: flex;
+  justify-content: space-between; /* 左右对齐 */
+  align-items: baseline;          /* 底线对齐，避免link掉下去 */
+  margin-bottom: 1em;
+}
+
+.title-row h1,
+.title-row h2 {
+  flex: 1;                        /* 撑满左边空间 */
+  margin: 0;
+  line-height: 1.4;
+}
+
+.title-row a {
+  margin-left: 10px;
+  text-decoration: none;
+  color: #0077cc;
+  flex-shrink: 0;                 /* 不被标题挤压 */
+  white-space: nowrap;            /* 保证不换行 */
+}
+
+
+
+
 img { max-width: 100%; height: auto; display: block; }
+
 p {line-height: 1; /* 或稍小 */
   margin-top:10px;    /* 或更小 */
   margin-bottom: 24px; /* 默认通常是 16px 左右 */
 }
 
+/* 响应式：手机屏幕上下排 */
+@media (max-width: 768px) {
+  .poem-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .zh, .en {
+    text-align: left;
+  }
+}
 
 
 /* 视频 */

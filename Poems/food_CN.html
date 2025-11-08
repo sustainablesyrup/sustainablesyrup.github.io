@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Ruoxi Wang</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <div class="container">
+     <div class="top-section">
+      <div id="sidebar" class="sidebar"></div>
+     <div id="rightbar" class="rightbar"></div>
+    </div>   
+     <div class="main"> 
+      <div class="title-row">
+      <h2>Revelation of Food / 食物现身</h2>
+    <a href="/Poems/food_EN.html">English Version</a></div>       
+<pre>他在一个小房间里，
+似乎在躲谁，
+拿出了3个蒸饭团大小的炸弹草率地点燃，
+塞进被他扣出一个洞的门底。
+
+园艺课的老师告诉我们，
+往有缝的地方插花，
+往有洞洞地方插草，
+很大的草 ，
+广东菜心。
+
+通风口上，
+放着一个黄色的箱子，
+像美团外卖，
+一缕缕白色的烟就从门口那个炸药，
+飘到那个外卖箱里。
+
+冬日下午4点，
+穿过柚子树旁的楼梯道，
+校门口有卖便当，
+限时销售，
+15分钟。
+
+我看到了，
+真的有吃的，
+热腾腾的米饭，
+有菜，
+有豆腐。
+
+我问站在那的人，
+你收钱吗，
+他说他只是个老师。
+
+我想偷一份盒饭。
+想想又算了。
+
+又看了眼价格，
+说15元吃饱，
+米糕28元28个，
+也很想吃。
+
+左边的门里是我的数学老师，
+我跑到那里，
+把她面前那扇门不停的关上，
+又等它自己打开。
+我看到她女儿走进校门了，
+或许她在看她女儿。
+
+我看向了右侧的玻璃，
+上面印着一首Rap的歌词，
+歌词很俗，
+让人不知道想说什么。
+     </pre>
+
+    </div>
+  </div>
+
+  <script>
+    Promise.all([
+      fetch("../sidebar.html").then(r => r.text()),
+      fetch("../rightbar.html").then(r => r.text())
+    ]).then(([left, right]) => {
+      document.getElementById("sidebar").innerHTML = left;
+      document.getElementById("rightbar").innerHTML = right;
+    }).catch(err => console.error("加载sidebar失败：", err));
+  </script>
+</body>
+</html>

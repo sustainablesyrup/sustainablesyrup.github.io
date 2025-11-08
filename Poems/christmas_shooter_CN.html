@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Ruoxi Wang</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="container">
+     <div class="top-section">
+      <div id="sidebar" class="sidebar"></div>
+     <div id="rightbar" class="rightbar"></div>
+     </div>
+    <div class="main"> 
+   <div class="title-row">
+    <h2>Christmas Shooter / 圣诞射手</h2>
+    <a href="/Poems/christmas_shooter_EN.html"> English Version</a></div>
+<pre>我没有想过能再回到以前的家
+但我在这儿
+昏暗的夜晚
+卧室的墙角有几箱零食
+一盒饼干上写着8646
+箱子的下面还有一箱
+似乎是什么节日
+可能是圣诞
+
+我的发量很大
+屋里的朋友们
+说要一起出去做爱
+但我在洗澡
+头发打了结
+
+打开窗户
+灰色小汽车慢慢驶离
+不知道是谁的
+
+想发微信
+找人出来做爱
+却不知道发给谁
+
+一个人拿着把枪走入
+我随即出门
+在我小区门口的车和保安亭间犹豫
+最后选择了保安亭
+告知他们那拿枪的个人
+
+有3位保安
+1位把门从关上变成了虚掩
+仿佛这样谈话就会更加安全
+
+那个男人突然从门上探出头来
+双管的枪
+对着我
+一枪
+两枪
+
+思考了一下
+有点错怪了他
+他只是为了杀人而杀人</pre>
+  </div>
+
+</main>
+
+
+
+  </div>
+
+  <script>
+    Promise.all([
+      fetch("../sidebar.html").then(r => r.text()),
+      fetch("../rightbar.html").then(r => r.text())
+    ]).then(([left, right]) => {
+      document.getElementById("sidebar").innerHTML = left;
+      document.getElementById("rightbar").innerHTML = right;
+    }).catch(err => console.error("加载sidebar失败：", err));
+  </script>
+</body>
+</html>
