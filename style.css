@@ -340,3 +340,173 @@ button.close:hover {
   color: #888;
 }
 
+/* CSS */
+
+/* 把你现在的 #player 和 .layer 样式全部替换成下面这几行 */
+#grass-player {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background: transparent;
+  overflow: visible;
+  margin: 20px auto;
+  padding: 0;
+  line-height: 0;
+}
+
+#grass-player .layer {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  /* 关键改动开始 */
+  opacity: 1;                  /* 默认就 100% 不透明！ */
+  visibility: hidden;          /* 用 visibility 隐藏，等加载好再显示 */
+  position: absolute;
+  top: 0; left: 0;
+  pointer-events: none;
+  /* 完全去掉 transition！不淡入淡出！ */
+}
+
+#grass-player .layer.active {
+  visibility: visible;         /* 加载好了就直接显示 */
+  position: relative;          /* 激活的这张撑开高度 */
+  display: block;
+}
+
+/* === 完全独立的绿草专属 grid === */
+.grass-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;   /* 左右各半，想调整改成 2fr 1fr 等 */
+  gap: 10px;                        /* 间距 */
+  max-width: 100% ;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* 左边：纯草播放器 */
+.grass-player {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background: transparent;
+  padding: 0;
+  line-height: 0;
+}
+
+.grass-player .grass-layer {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  opacity: 1;
+  visibility: hidden;
+  position: absolute;
+  top: 0; left: 0;
+  pointer-events: none;
+}
+
+.grass-player .grass-layer.active {
+  visibility: visible;
+  position: relative;
+}
+
+/* 右边图片垂直居中完美方案 */
+.grass-right {
+  width: 100%;
+  height: auto;
+  line-height: 0;
+  
+  /* 关键：让容器变成弹性盒子 */
+  display: flex;
+  justify-content: center;    /* 水平居中（可选） */
+  align-items: center;        /* 垂直居中！ */
+  background: transparent;    /* 透明背景 */
+  
+  /* 可选：如果你想让右边也有和左边一样的高度 */
+  min-height: 300px;          /* 或者写成 min-height: 60vh; */
+}
+
+/* 图片本身保持完整显示，不拉伸 */
+.grass-right img {
+  width: auto;                /* 改！不再 100% 宽度 */
+  height: auto;
+  max-width: 100%;            /* 防止超出容器 */
+  max-height: 80vh;           /* 可选：限制最大高度 */
+  display: block;
+  object-fit: contain;
+  background: transparent;
+}
+
+/* 手机端自动变上下布局 */
+@media (max-width: 768px) {
+  .grass-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+
+
+/* 弹窗放大层（适度大小，非全屏）*/
+#grassPopup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease;
+  backdrop-filter: blur(8px);
+  padding: 20px;                 /* 四周留白，避免贴边 */
+  box-sizing: border-box;
+}
+
+#grassPopup.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 图片：原尺寸、不拉伸、不裁剪 */
+#grassPopup img {
+  max-width: 90vw;               /* 最大不超过屏幕 90% */
+  max-height: 90vh;
+  width: auto;                   /* 关键：原宽度 */
+  height: auto;                  /* 关键：原高度 */
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  animation: popIn 0.4s ease;
+}
+
+/* 小关闭叉叉 */
+.grass-popup-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+}
+
+.grass-popup-close:hover {
+  background: rgba(255,255,255,0.4);
+  transform: scale(1.1);
+}
+
+/* 放大动画 */
+@keyframes popIn {
+  from { transform: scale(0.4); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+

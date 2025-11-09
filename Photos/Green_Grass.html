@@ -13,23 +13,23 @@
       <div id="sidebar" class="sidebar"></div>
      <div id="rightbar" class="rightbar"></div>
     </div>   
+
      <div class="main"><h2>Green Grass / 绿草</h2>
+<div class="grass-grid">
+    <div id="grass-player" id="clickableGrass">
+  <img id="front" class="layer" src="">
+  <img id="back"  class="layer" src="">
+      
+      </div><div class="grass-right"><img src="/images/Green_Grass/1.jpg" loading="lazy" alt="...">
+</div>
 
-    <div id="player"></div>
-
-
-
-
-    <img src="/images/Green_Grass/1.jpg" loading="lazy" alt="...">
-    <img src="/images/Green_Grass/2.jpg" loading="lazy" alt="...">
-    <img src="/images/Green_Grass/3.jpg" loading="lazy" alt="...">
-    <img src="/images/Green_Grass/4.jpg" loading="lazy" alt="...">
-    <img src="/images/Green_Grass/5.jpg" loading="lazy" alt="...">
-    <img src="/images/Green_Grass/6.jpg" loading="lazy" alt="...">
-    <img src="/images/Green_Grass/7.jpg" loading="lazy" alt="...">
-    <img src="/images/Green_Grass/8.jpg" loading="lazy" alt="...">
-    <img src="/images/Green_Grass/9.jpg" loading="lazy" alt="...">
+</div>
     </div>
+
+   <div id="grassPopup">
+  <div class="grass-popup-close">×</div>
+  <img src="" alt="放大草">
+</div> 
   </div>
 
   <script>
@@ -43,58 +43,120 @@
   </script>
 
 <script>
-const imagePaths = [];  // 假设你的图片都放在同一个文件夹
-for (let i = 1; i <= 49; i++) {
-  imagePaths.push(`/images/grassslide/${i}.jpg`);
-}
+// JS
+const TOTAL = 49;
+const imagePaths = Array.from({length: TOTAL}, (_, i) => `/images/grassslide/${i+1}.jpg`);
 
-const player = document.getElementById('player');
-player.style.width = "100%";
-player.style.height = "100vh";
-player.style.backgroundSize = "contain";
-player.style.backgroundRepeat = "no-repeat";
-player.style.backgroundPosition = "center";
+const front = document.getElementById('front');
+const back  = document.getElementById('back');
+let currentLayer = front;
+let nextLayer    = back;
 
-let interval = 100; 
+// 记录哪些图片真正“可用”（加载+解码成功）
+const availableImages = [];
+const preloaded = new Map(); // src => Image 对象
 
-function randomImage() {
-  const img = imagePaths[Math.floor(Math.random() * imagePaths.length)];
-  player.style.backgroundImage = `url(${img})`;
-}
+let lastIndex = -1;
+let isFirst = true;
 
-setInterval(randomImage, interval);
+// 预加载 + 异步解码 + 标记可用
+imagePaths.forEach((src, index) => {
+  const img = new Image();
+  img.loading = 'eager';
+  img.decoding = 'async';           // 异步解码，不卡主线程
+  img.src = src;
 
-const preloaded = [];
-imagePaths.forEach(src => {
-  const image = new Image();
-  image.src = src;
-  preloaded.push(image);
+  img.decode()
+    .then(() => {
+      preloaded.set(src, img);
+      availableImages.push({src, index});
+      // 第一张加载好就立刻显示
+      if (isFirst && availableImages.length === 1) {
+        showImage(availableImages[0]);
+        isFirst = false;
+        startFastLoop();
+      }
+    })
+    .catch(() => {
+      // 加载或解码失败 → 完全忽略这张图
+      console.warn(`图片加载失败，跳过: ${src}`);
+    });
 });
 
-let isLoading = false;
+// 只要有一张图可用就立刻开始超高速循环
+function startFastLoop() {
+  setInterval(() => {
+    if (availableImages.length === 0) return;
 
-// 先加载第一张
-img.src = imagePaths[0];
+    let next;
+    // 随机但不重复上一张
+    do {
+      next = availableImages[Math.floor(Math.random() * availableImages.length)];
+    } while (availableImages.length > 1 && next.index === lastIndex);
 
-// 切换函数
-function showRandomImage() {
-  if (isLoading) return; // 如果上一次还没加载完，就跳过这次
-  isLoading = true;
+    showImage(next);
+    lastIndex = next.index;
+  }, 80); // 80ms ≈ 12.5 FPS，极快且不闪烁！再低会卡
+}
+function showImage({src}) {
+  const img = preloaded.get(src);
+  if (!img) return;
 
-  const nextIndex = Math.floor(Math.random() * imagePaths.length);
-  const tempImage = new Image();
-  tempImage.src = imagePaths[nextIndex];}
+  // 直接硬切！不等动画！
+  nextLayer.src = src;
+  nextLayer.classList.add('active');
+  currentLayer.classList.remove('active');
 
-  // 只有在加载完成后才切换
-  tempImage.onload = () => {
-    img.src = tempImage.src;
-    isLoading = false;
-  };
-  // 如果图片加载失败，直接放弃这次
-  tempImage.onerror = () => {
-    isLoading = false;
-  };
+  // 交换
+  [currentLayer, nextLayer] = [nextLayer, currentLayer];
+}
+
+
+// 如果所有图都加载失败（极端情况），显示纯黑
+setTimeout(() => {
+  if (availableImages.length === 0) {
+    document.getElementById('player').style.background = 'black';
+  }
+}, 8000);
 </script>
 
+</script>
+
+<script>
+let isPaused = false;  // 暂停开关（已在前面的代码里加过）
+
+// 获取当前正在显示的图片 src
+function getCurrentSrc() {
+  return document.querySelector('.grass-player .grass-layer.active')?.src || '';
+}
+
+// 点击草地 → 弹出放大
+document.getElementById('clickableGrass').addEventListener('click', function(e) {
+  e.stopPropagation();
+  const src = getCurrentSrc();
+  if (!src) return;
+
+  const popup = document.getElementById('grassPopup');
+  const img = popup.querySelector('img');
+  img.src = src;                // 直接用原图
+  popup.classList.add('active');
+  isPaused = true;              // 暂停狂闪
+});
+
+// 点击叉叉或空白处关闭
+document.getElementById('grassPopup').addEventListener('click', function(e) {
+  if (e.target === this || e.target.classList.contains('grass-popup-close')) {
+    this.classList.remove('active');
+    isPaused = false;           // 恢复狂闪
+  }
+});
+
+// ESC 键关闭
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.getElementById('grassPopup').classList.remove('active');
+    isPaused = false;
+  }
+});</script>
 </body>
 </html>
