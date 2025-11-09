@@ -15,8 +15,9 @@
     </div>   
 
      <div class="main"><h2>Green Grass / 绿草</h2>
-<div class="grass-grid">
-    <div id="grass-player" id="clickableGrass">
+      <br></br>
+<div class="grass-row">
+    <div id="grass-player" >
   <img id="front" class="layer" src="">
   <img id="back"  class="layer" src="">
       
@@ -47,8 +48,12 @@
 const TOTAL = 49;
 const imagePaths = Array.from({length: TOTAL}, (_, i) => `/images/grassslide/${i+1}.jpg`);
 
+const container = document.getElementById('grass-player');
 const front = document.getElementById('front');
 const back  = document.getElementById('back');
+const popup = document.getElementById('grassPopup');
+const popupImg = popup.querySelector('img');
+
 let currentLayer = front;
 let nextLayer    = back;
 
@@ -125,38 +130,51 @@ setTimeout(() => {
 <script>
 let isPaused = false;  // 暂停开关（已在前面的代码里加过）
 
-// 获取当前正在显示的图片 src
-function getCurrentSrc() {
-  return document.querySelector('.grass-player .grass-layer.active')?.src || '';
-}
+container.addEventListener('click', function(e){
+      e.stopPropagation();
+      // 取当前显示的图片 src（由 active 类判定）
+      const currentSrc = currentLayer?.src || '';
+      if (!currentSrc) return;
+      popupImg.src = currentSrc;
+      popup.classList.add('active');
+      isPaused = true;  // 暂停切换
+    });
 
-// 点击草地 → 弹出放大
-document.getElementById('clickableGrass').addEventListener('click', function(e) {
-  e.stopPropagation();
-  const src = getCurrentSrc();
-  if (!src) return;
+    // 关闭弹窗：点击遮罩或叉号
+    popup.addEventListener('click', function(e) {
+      if (e.target === this || e.target.classList.contains('grass-popup-close')) {
+        popup.classList.remove('active');
+        isPaused = false; // 恢复
+      }
+    });
 
-  const popup = document.getElementById('grassPopup');
-  const img = popup.querySelector('img');
-  img.src = src;                // 直接用原图
-  popup.classList.add('active');
-  isPaused = true;              // 暂停狂闪
-});
+    // ESC 关闭
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && popup.classList.contains('active')) {
+        popup.classList.remove('active');
+        isPaused = false;
+      }
+    });
 
-// 点击叉叉或空白处关闭
-document.getElementById('grassPopup').addEventListener('click', function(e) {
-  if (e.target === this || e.target.classList.contains('grass-popup-close')) {
-    this.classList.remove('active');
-    isPaused = false;           // 恢复狂闪
-  }
-});
+    // 点击页面任意处也可恢复（可选）
+    document.addEventListener('click', function(){
+      if (popup.classList.contains('active')) return;
+      // 若误进入 pause 状态且没有弹窗，确保恢复
+      if (!popup.classList.contains('active')) isPaused = false;
+    });
 
-// ESC 键关闭
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    document.getElementById('grassPopup').classList.remove('active');
-    isPaused = false;
-  }
-});</script>
+    // 页面可见性处理（切换 tab 时也自动暂停）
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        isPaused = true;
+      } else {
+        // 仅当弹窗未打开时恢复
+        if (!popup.classList.contains('active')) isPaused = false;
+      }
+    });
+
+    // 页面卸载前清理定时器
+    window.addEventListener('beforeunload', () => { stopFastLoop(); });
+    </script>
 </body>
 </html>
