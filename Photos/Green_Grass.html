@@ -14,6 +14,12 @@
      <div id="rightbar" class="rightbar"></div>
     </div>   
      <div class="main"><h2>Green Grass / 绿草</h2>
+
+    <div id="player"></div>
+
+
+
+
     <img src="/images/Green_Grass/1.jpg" loading="lazy" alt="...">
     <img src="/images/Green_Grass/2.jpg" loading="lazy" alt="...">
     <img src="/images/Green_Grass/3.jpg" loading="lazy" alt="...">
@@ -35,5 +41,60 @@
       document.getElementById("rightbar").innerHTML = right;
     }).catch(err => console.error("加载sidebar失败：", err));
   </script>
+
+<script>
+const imagePaths = [];  // 假设你的图片都放在同一个文件夹
+for (let i = 1; i <= 49; i++) {
+  imagePaths.push(`/images/grassslide/${i}.jpg`);
+}
+
+const player = document.getElementById('player');
+player.style.width = "100%";
+player.style.height = "100vh";
+player.style.backgroundSize = "contain";
+player.style.backgroundRepeat = "no-repeat";
+player.style.backgroundPosition = "center";
+
+let interval = 100; 
+
+function randomImage() {
+  const img = imagePaths[Math.floor(Math.random() * imagePaths.length)];
+  player.style.backgroundImage = `url(${img})`;
+}
+
+setInterval(randomImage, interval);
+
+const preloaded = [];
+imagePaths.forEach(src => {
+  const image = new Image();
+  image.src = src;
+  preloaded.push(image);
+});
+
+let isLoading = false;
+
+// 先加载第一张
+img.src = imagePaths[0];
+
+// 切换函数
+function showRandomImage() {
+  if (isLoading) return; // 如果上一次还没加载完，就跳过这次
+  isLoading = true;
+
+  const nextIndex = Math.floor(Math.random() * imagePaths.length);
+  const tempImage = new Image();
+  tempImage.src = imagePaths[nextIndex];}
+
+  // 只有在加载完成后才切换
+  tempImage.onload = () => {
+    img.src = tempImage.src;
+    isLoading = false;
+  };
+  // 如果图片加载失败，直接放弃这次
+  tempImage.onerror = () => {
+    isLoading = false;
+  };
+</script>
+
 </body>
 </html>

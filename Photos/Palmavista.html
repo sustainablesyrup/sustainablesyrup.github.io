@@ -120,6 +120,7 @@
   </script>
 
  <script>
+  if (window.innerWidth > 768) { 
 const galleryImages = document.querySelectorAll('.gallery img');
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
@@ -149,6 +150,23 @@ document.querySelector('.prev').addEventListener('click', () => {
 
 document.querySelector('.close').addEventListener('click', () => {
   lightbox.classList.remove('active');
+});}
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const gallery = document.querySelector(".gallery");
+  const images = Array.from(gallery.children);
+
+  // Fisher–Yates 洗牌算法
+  for (let i = images.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [images[i], images[j]] = [images[j], images[i]];
+  }
+
+  // 清空 gallery 并重新插入打乱顺序的图片
+  gallery.innerHTML = "";
+  images.forEach(img => gallery.appendChild(img));
 });
 </script>
 

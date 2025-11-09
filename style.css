@@ -88,7 +88,7 @@ html, body {
     grid-auto-rows: min-content;
     min-height: 0;
   }
-  .main {
+.main {
     grid-column: 1;
     grid-row: 2;
     width: 100%;
@@ -113,6 +113,7 @@ html, body {
 }
 
 .sidebar h1 > a,
+.sidebar h3 > a,
 .sidebar h2 > a { text-decoration: none; }
 
 .menu {
@@ -286,7 +287,7 @@ left: 50%;                   /* 先移到中间 */
 width: 50%;
 height: 100%;
 transform: translateX(0);    /* 不动也行，主要是配合 left: 50% */
-background: rgb(255, 0, 0);
+background:#000000;
 justify-content: center;
 align-items: center;
 z-index: 9999;
