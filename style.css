@@ -255,3 +255,87 @@ pre {
 }
 
 
+/* 默认 grid 模式 */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 0px;
+  cursor:pointer;
+  transition: transform 0.2s;
+}
+
+.gallery img:hover {
+  transform: scale(1.03);
+}
+
+/* 单张查看模式 */
+.lightbox {
+  display: none;
+}
+
+.lightbox.active {
+display: flex;
+position: fixed;
+top: 0;
+left: 50%;                   /* 先移到中间 */
+width: 50%;
+height: 100%;
+transform: translateX(0);    /* 不动也行，主要是配合 left: 50% */
+background: rgb(255, 0, 0);
+justify-content: center;
+align-items: center;
+z-index: 9999;
+}
+
+.lightbox img {
+  max-width: 100%;          /* 不超出容器宽度 */
+  max-height: 100%;         /* 不超出容器高度 */
+  width: auto;              /* 保持原比例 */
+  height: auto;
+  border-radius: 0 !important;
+  object-fit: contain;      /* 确保不被拉伸 */
+}
+
+/* 左右按钮 */
+button.prev, button.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.1);
+  color: white;
+  border: none;
+  font-size: 32px;
+  padding: 12px;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+button.prev:hover, button.next:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+button.prev { left: 20px; }
+button.next { right: 20px; }
+
+/* 关闭按钮 */
+button.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  color: white;
+  font-size: 32px;
+  border: none;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+button.close:hover {
+  color: #888;
+}
+

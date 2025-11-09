@@ -71,10 +71,42 @@
 <img src="/images/Palmavista/53.jpg" loading="lazy">
 <img src="/images/Palmavista/54.jpg" loading="lazy">
  </div> 
+ <div id="lightbox" class="lightbox"> <button class="close">&times;</button>
+  <button class="prev">&#10094;</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="next">&#10095;</button></div>
+
  <style> .gallery { display: grid; 
  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; } 
- .gallery img { width: 100%; height: auto; cursor: pointer; } </style>
+ .gallery img { width: 100%; height: auto; cursor: pointer; } 
+ .lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.gallery img {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.03);
+}
+</style>
     </div>
+
   </div>
 
   <script>
@@ -86,16 +118,39 @@
       document.getElementById("rightbar").innerHTML = right;
     }).catch(err => console.error("sidebar failed：", err));
   </script>
-  
-<script>
-  const gallery = document.getElementByid('gallery');
-  const images = Array.from(gallery.children);
-  // 打乱顺序（Fisher-Yates shuffle）
-  for (let i = images.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    gallery.appendChild(images[j]);
-    images.splice(j, 1);
-  }
+
+ <script>
+const galleryImages = document.querySelectorAll('.gallery img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+let currentIndex = 0;
+
+galleryImages.forEach((img, i) => {
+  img.addEventListener('click', () => {
+    currentIndex = i;
+    showImage();
+  });
+});
+
+function showImage() {
+  lightboxImg.src = galleryImages[currentIndex].src;
+  lightbox.classList.add('active');
+}
+
+document.querySelector('.next').addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % galleryImages.length;
+  showImage();
+});
+
+document.querySelector('.prev').addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+  showImage();
+});
+
+document.querySelector('.close').addEventListener('click', () => {
+  lightbox.classList.remove('active');
+});
 </script>
+
 </body>
 </html>
