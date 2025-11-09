@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Ruoxi Wang</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+     <div class="container">
+     <div class="top-section">
+      <div id="sidebar" class="sidebar"></div>
+     <div id="rightbar" class="rightbar"></div>
+    </div>   
+     <div class="main"> <div class="photobar"></div>
+    <div class="main-content"> 
+      <img src="/images/other/ADLBCTM_cat.jpg" loading="lazy" alt="" style="height: 85vh; width: auto;">
+      <pre><em>I don't like Blue Cantaloupe that much</em>, 2025
+cantaloupe, syrup, kitchen knife, orange juice, glitters, engine oil, oil tank, paint.</pre>
+<img src="/images/other/ADLBCTM_cat.jpg" loading="lazy" alt="">
+    </div> </div>
+  </div>
+</body>
+</html>
+
+  </div>
+
+  <script>
+    Promise.all([
+      fetch("../sidebar.html").then(r => r.text()),
+      fetch("../rightbar.html").then(r => r.text())
+    ]).then(([left, right]) => {
+      document.getElementById("sidebar").innerHTML = left;
+      document.getElementById("rightbar").innerHTML = right;
+    }).catch(err => console.error("加载sidebar失败：", err));
+     const photobar = document.querySelector(".photobar");
+  if (photobar) {
+    fetch("../photobar.html")
+      .then(r => r.text())
+      .then(html => {
+        photobar.innerHTML = html;
+      })
+      .catch(err => console.error("加载photobar失败：", err));
+  }
+  </script>
+</body>
+</html>
+

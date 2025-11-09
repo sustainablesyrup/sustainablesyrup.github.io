@@ -2,6 +2,7 @@
 /* 全局设置 */
 html, body {
   margin: 0;
+    height: 100%;
   padding: 0;
   overflow-x: hidden; 
   box-sizing: border-box;
@@ -16,7 +17,7 @@ html, body {
 /* ---- 桌面端 ---- */
 .container {
   display: grid;
-  grid-template-columns: 300px 1fr 180px;
+  grid-template-columns: 280px 1fr 200px;
   grid-template-rows: 1fr; 
   height: 100vh;
   gap: 0;
@@ -113,7 +114,6 @@ html, body {
 }
 
 .sidebar h1 > a,
-.sidebar h3 > a,
 .sidebar h2 > a { text-decoration: none; }
 
 .menu {
@@ -127,6 +127,7 @@ html, body {
   list-style: circle;
   padding: 4px 0 4px 8px;
   margin: 0;
+  line-height: 1.4;
 }
 
 .sidebar li {
@@ -145,25 +146,24 @@ html, body {
 
 /* 右栏 */
 .rightbar {
-  padding: 6px;        
-  font-size: 13px;
+  padding: 0px 6px 0px 12px;        
+  font-size: 14px;
   line-height: 1.4;     
   min-width: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-.rightbar h1 {
-  font-size: 20px;           
-  margin-bottom: 8px;
-}
 
 .rightbar ul {
-  list-style: none;
-  padding: 0;
+  list-style:circle;
+  padding: 0px;
   margin: 0 0 10px 0;
+  line-height: 1.4;
 }
 
 .rightbar a {
-  text-decoration: none;
+  text-decoration:underline;
   color: rgb(0, 0, 255);
 }
 
@@ -173,16 +173,19 @@ html, body {
 
 /* 中间主栏 */
 .main {
-  padding: 5px 20px 5px 20px; /* 上、右、下、左 */
+  padding: 0px 0px 0px 0px; /* 上、右、下、左 */
   overflow-y: auto;
   border-right: 1px solid black;
   border-left: 1px solid black;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin-top: 0.2em;   /* 上方间距 */
-  margin-bottom: 0.1em; /* 下方间距 */
+  margin-top: 0.4em;      /* 上方间距 */
+  margin-bottom: 0.4em;   /* 下方间距 */
+  padding-left: 0.8em;    /* ✅ 左内边距 */
+  padding-right: 0.8em;   /* ✅ 右内边距 */
 }
+
 
 .title-row {
   display: flex;
@@ -192,14 +195,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .title-row h1,
-.title-row h2 {
+.title-row h2,
+.title-row h3{
   flex: 1;                        /* 撑满左边空间 */
-  margin: 0;
+  margin: 8px  12px 8px 12px;
   line-height: 1.4;
 }
 
 .title-row a {
-  margin-left: 10px;
+  margin-right: 16px;
   text-decoration: none;
   color: #0077cc;
   flex-shrink: 0;                 /* 不被标题挤压 */
@@ -249,7 +253,7 @@ pre {
   word-wrap: break-word;
   text-align: left;
   max-width:max-content;
-  margin: 8px 0 20px 0;   /* 段前后多留空 */
+  margin: 8px 12px 20px 12px;   /* 段前后多留空 */
   background: transparent;   /* 或淡灰，若想模拟纸感 */
   letter-spacing: 0.3px;      /* 字间微扩张，视觉更柔 */
   font-variant-ligatures: common-ligatures; /* 更自然的西文字体连接 */
@@ -464,3 +468,60 @@ button.close:hover {
   to   { transform: scale(1); opacity: 1; }
 }
 
+
+/* ✅ 仅当 .main 里面有 .photobar 时生效 */
+.main:has(.photobar) {
+  display: grid;
+  grid-template-columns: 200px auto;  /* photobar 在左，内容在右 */
+ height: 100%;
+}
+
+/* photobar 容器基本样式（仅当 main 包含 photobar 时） */
+.main:has(.photobar) .photobar {
+  font-size: 14px;
+  overflow-y: auto;
+ overflow-x: hidden;
+ height: 100%;
+  padding: 0;       /* ✅ 完全去掉内边距 */
+  margin: 0;        /* ✅ 去掉外边距 */
+  box-sizing: border-box; /* 防止滚动条撑开 */
+}
+
+.main:has(.photobar) .photobar .menu {
+  margin-left: 12px;   /* ✅ 向右缩进一点 */
+  font-weight: bold;   /* 如果想让它看起来是标题 */
+}
+
+/* 去掉 li 的默认内边距/外边距和前置符号 */
+.main:has(.photobar) .photobar ul{
+  list-style:lower-alpha;
+  margin: 12px 0 0 12px;
+  padding: 0 0 0 12px;
+  
+}
+
+.main:has(.photobar) .photobar li {list-style:lower-alpha;
+  line-height: 1.6;
+  margin: 0px;
+  padding: 0 0 0 0;}
+
+/* 只针对 photobar 内的 <a>：蓝色且下划线；不影响 menu 等其它链接 */
+.main:has(.photobar) .photobar a {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;      /* 小手提示（可选） */
+}
+
+/* 可选：a 的 hover 效果，增强可点击性（非必要） */
+.main:has(.photobar) .photobar a:hover {
+  text-decoration-thickness: 2px;
+  color: rgb(0, 60, 180); /* 深一点的蓝 */
+}
+
+
+
+/* ✅ 内容区样式 */
+.main:has(.photobar) .main-content {
+     border-left: 1px solid black;    /* photobar 与内容的分隔线 */
+  padding: 8px;
+}
