@@ -16,7 +16,7 @@ html, body {
 /* ---- 桌面端 ---- */
 .container {
   display: grid;
-  grid-template-columns: 250px 1fr 180px;
+  grid-template-columns: 300px 1fr 180px;
   grid-template-rows: 1fr; 
   height: 100vh;
   gap: 0;
@@ -98,38 +98,42 @@ html, body {
 
 /* 左栏 */
 .sidebar {
-  padding: 4px;       
-  font-size: 13px;
-  line-height: 1.4;
+  padding: 4px 6px 8px 6px; 
+  font-size: 14px;
+  line-height: 1.2;
   min-width: 0;
-  overflow-y: auto;        /* 垂直方向出现滚动条 */
-  overflow-x: hidden;      /* 水平方向不滚动 */
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .sidebar h1 {
-  font-size: 20px;     
-  margin-bottom: 8px;
+  font-size: 20px;
+  margin-top: 0;
+  margin-bottom: 6px;
 }
+
+.sidebar h1 > a,
+.sidebar h2 > a { text-decoration: none; }
 
 .menu {
   font-weight: bold;
   text-align: left;
-  margin-top: 0.6em;   /* 上方间距 */
-  margin-bottom: 0.1em; /* 下方间距 */        
+  margin-top: 0.5em;
+  margin-bottom: 0;
 }
 
 .sidebar ul {
-  list-style:circle;
-  padding: 0;
-  margin: 0px 0 0px 0;
+  list-style: circle;
+  padding: 4px 0 4px 8px;
+  margin: 0;
 }
 
 .sidebar li {
-  margin: 5px 0 5px 0;
+  margin: 3px 0;
 }
 
 .sidebar a {
-  text-decoration:underline;
+  text-decoration: underline;
   color: rgb(0, 0, 255);
 }
 
