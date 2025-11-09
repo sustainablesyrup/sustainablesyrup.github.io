@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Ruoxi Wang</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+   <div class="container">
+     <div class="top-section">
+      <div id="sidebar" class="sidebar"></div>
+     <div id="rightbar" class="rightbar"></div>
+    </div>
+
+    <div class="main">
+     <div class="title-row"><H2>Non-Binary / 非二元</H2>
+<a href="/writings/Non-Binary_EN.html">English Version</a></div>
+
+    <pre>太阳变质了，被太阳晒到的人就会中毒，并慢慢死去。
+    我和我的伴侣住在南京的半山花园。X有一个很帅气很大的灰色皮卡，不过不是赛博皮卡，是福特F350。ta现在30岁左右，脸上有了一些中毒的痕迹，很白，又有一些血丝。然后X的头发很短，我觉得很帅。
+    我们在车里躲着阳光，开着皮卡，但还是偶尔会被照到，会疼。
+    以前那个小区的格局，单元楼门是不能停车，需要步行一小段距离，但是现在，在单元楼门上前赫然贴着限速70kmh，似乎是为了躲避太阳直接把车撞进楼里也没问题一样。
+    然后我护着X进楼，好像我是永生不死的一样。
+
+    吃饭。
+    吃的是苋菜，空心菜，西红柿炒蛋，和汤圆。
+    汤圆有一股非常奇怪又恶心的味道，吃了后会很想吐，闻到自己熟悉的胃酸和胆汁。每吃一口都会。
+    然后我们把汤圆拿走了，桌上的菜就只剩下，苋菜，空心菜，和西红柿炒蛋。但我也不是很有胃口，可能也是中了太阳的毒吧。吃了两口苋菜，就不吃了回卧室了。
+    以后的几个月我一直都能感觉到这个味道。有时在用的戴森吹风机的时候都能闻到它，然后呕吐。我还在寻思是不是预示着什么。
+    我妈还给我洗了葡萄，放在卧室的床头柜上，我觉得葡萄也不是不好。
+
+    工作。
+    我的工作是在一个沃尔玛一样大的超市，把所有的商品按照颜色分类，一种种摆放在墙边。
+    我正在卖力的把一堆黑色的马桶吸子，还有一堆蓝色的垃圾桶叠在一起。忽然意识到了一个问题。就是，这个超市里的东西实在太多了，我不可能整理的完。更不可能把它们规整地收在墙角。
+    于是我开始和同事讲我的这个发现，跟同事说，我的工作应该不仅仅是要把商品按照颜色分类，更重要的是，区别出哪些需要被分类，哪些不需要。有几位同事听懂了我说的话，觉得有道理。
+
+    回家后我还是在继续这种工作，在到处吸尘，观察哪些不怎么用的东西可以被当作垃圾扔掉。然后我在整理一个柜子的时候，M跑了过来。ta穿白色的衣服，我们都是非二元。当然，X也是非二元。
+    M问我，我会和自己最好的朋友发展浪漫关系吗？我说我会呀，我是那种人。
+    然后ta就开开心心蹦蹦哒哒地出门玩了，估计是参加什么party，好像不会死一样的。
+    上次和M见面还是一个节日，因为我飞她那，或者她飞我这都成本比较高，于是我们商量出一个两人共同承担成本的策略，就是分别开车到Denver过这个节。每人的油费也就100多刀，然后可以分摊一个motel。至于吃什么，我们决定就吃泰餐，因为泰餐口味稳定廉价。当天在Denver还有一些舞会和音乐会。
+
+    后来在丹佛，我们在居民区走路，路边有的地方有很多homeless，有的没有，我在思考这种规律的原因时，突然被一个社交软件上我没有回复消息的男的问，我是不是穿着黑色的裙子，意识到被stalk后我很不爽，一蹦一跳地逃跑了。
+
+    But still, 我们都是快乐的没有性别的非二元。
+    不过太阳也确实是有毒的，大家也的确会慢慢死去。
+</pre>
+    </div>
+
+  </div>
+
+  <script>
+    Promise.all([
+      fetch("../sidebar.html").then(r => r.text()),
+      fetch("../rightbar.html").then(r => r.text())
+    ]).then(([left, right]) => {
+      document.getElementById("sidebar").innerHTML = left;
+      document.getElementById("rightbar").innerHTML = right;
+    }).catch(err => console.error("加载sidebar失败：", err));
+  </script>
+</body>
+</html>

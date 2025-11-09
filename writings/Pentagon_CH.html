@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Ruoxi Wang</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+   <div class="container">
+     <div class="top-section">
+      <div id="sidebar" class="sidebar"></div>
+     <div id="rightbar" class="rightbar"></div>
+    </div>
+
+    <div class="main">
+     <div class="title-row"><H2>Pentagon / 五角楼</H2>
+<a href="/writings/Pentagon_EN.html">English Version</a></div>
+
+    <pre>总之我开始逃课，我已经有好几个上午从数学体育英语课上人间消失了。
+    有一天，我开车从南京的城东边，逃课去医院，只是一时兴起想去医院做面诊，然后我也比较拖延，路上在别的地方停了，记忆深刻的是去学校用了女厕。
+    但是我逐渐意识到，我出门的目的是去这个面诊预约，预约时间是3月13日，星期四，下午1:30。而我意识到的时候，已经是1:10分，根本不可能抵达了。
+
+    我还记得那天下午的第一节课是体育课。
+    很神奇。随后我也就放弃去appointment了，去了一个大型方形的，像多层停车场一样的建筑结构里，我在7楼的一个小宾馆开了一间就离开了，在与7楼人们的欢乐互动中四处走动，但花了好久才找到下去的路。
+    我穿着我深蓝色的始祖鸟Gamma MX外套，和深绿色的Nike ACG裙子，而我记得我出门时穿的是双排扣的呢子大衣，我的钱包和一些别的也不见了，我很慌就回去找这个旅馆。做了很多次电梯到了很多个7楼，但是看到的景象都不一样，其中一次开门就是一个巨大假人的裙子角。
+    我认为我的宾馆在这个建筑的一角上，只要挨个角找下去就能找到，所以我也判断这个建筑要么是方形的，要么是像五角大楼那样的多边形。
+    这时来了一个朋友跟我一起找。终于我在6楼的一处找到了比较熟悉的结构的影子，然后跑着爬上了楼梯到了原来的7楼。
+    酒店原来我认识的男老板不见了，变成了女老板和一个婆婆，我向她们招手，她们说招手多生分啊。
+    我道歉，说了原委，女老板带我去找我的房间，但我也不记得房间号。
+
+    就在我思考时，看到了男老板在一个高台上有说有笑的走着，我们看到了对方，都很兴奋的向对方跑过来，我爬到高台的一半上去和他拥抱。
+    女老板看了有点不爽，但没表达什么，给了我一块大方手帕，让我盖着肚子别着凉姨妈疼。
+    男老板问她干嘛，说看不出来他和我在谈恋爱吗？
+    然后女老板说她和我不也在谈恋爱吗？
+    弄得我很想笑。
+</pre>
+    </div>
+
+  </div>
+
+  <script>
+    Promise.all([
+      fetch("../sidebar.html").then(r => r.text()),
+      fetch("../rightbar.html").then(r => r.text())
+    ]).then(([left, right]) => {
+      document.getElementById("sidebar").innerHTML = left;
+      document.getElementById("rightbar").innerHTML = right;
+    }).catch(err => console.error("加载sidebar失败：", err));
+  </script>
+</body>
+</html>
