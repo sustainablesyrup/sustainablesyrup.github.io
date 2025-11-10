@@ -48,7 +48,7 @@
 <script>
 // JS
 const TOTAL = 49;
-const imagePaths = Array.from({length: TOTAL}, (_, i) => `/images/grassslide/${i+1}.jpg`);
+const imagePaths = Array.from({length: TOTAL}, (_, i) => `./images/grassslide/${i+1}.jpg`);
 
 const container = document.getElementById('grass-player');
 const front = document.getElementById('front');
@@ -122,12 +122,11 @@ function showImage({src}) {
 // 如果所有图都加载失败（极端情况），显示纯黑
 setTimeout(() => {
   if (availableImages.length === 0) {
-    document.getElementById('player').style.background = 'black';
+    document.getElementById('grass-player').style.background = 'black';
   }
 }, 8000);
 </script>
 
-</script>
 
 <script>
 let isPaused = false;  // 暂停开关（已在前面的代码里加过）
