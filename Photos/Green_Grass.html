@@ -48,7 +48,11 @@
 <script>
 // JS
 const TOTAL = 49;
-const imagePaths = Array.from({length: TOTAL}, (_, i) => `../images/grassslide/${i+1}.jpg`);
+const imagePaths = Array.from({ length: TOTAL }, (_, i) => {
+  const num = String(i + 1).padStart(2, '0'); // 把 1 → "01"，2 → "02"
+  return `../images/grassslide/${num}.jpg`;
+});
+
 
 const container = document.getElementById('grass-player');
 const front = document.getElementById('front');
