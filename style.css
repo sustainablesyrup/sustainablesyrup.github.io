@@ -408,7 +408,7 @@ button.close:hover {
 }
 
 #grass-player {
-  flex: 2;             /* 左边占 3 份 */
+  flex: 2;             
   background: transparent;
 }
 
@@ -419,15 +419,21 @@ button.close:hover {
   align-items: center;
 }
 
-
-/* 手机端自动变上下布局 */
 @media (max-width: 768px) {
-  .grass-grid {
-    grid-template-columns: 1fr;
+  .grass-row {
+    flex-direction: column;  /* 改成上下排列 */
     gap: 30px;
+    height: 100vh;           /* 可选：让它占满屏幕（按需要） */
+  }
+
+  #grass-player {
+    flex: 2;                 /* 占2份高度 */
+  }
+
+  .grass-right {
+    flex: 1;                 /* 占1份高度 */
   }
 }
-
 
 
 /* 弹窗放大层（适度大小，非全屏）*/
