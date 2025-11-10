@@ -46,27 +46,24 @@
   </script>
 
 <script>
-// JS
 const TOTAL = 49;
 const imagePaths = Array.from({ length: TOTAL }, (_, i) => {
-  const num = String(i + 1).padStart(2, '0'); // 把 1 → "01"，2 → "02"
+  const num = String(i + 1).padStart(2, '0');
   return `../images/grassslide/${num}.jpg`;
 });
 
-
 const container = document.getElementById('grass-player');
 const front = document.getElementById('front');
-const back  = document.getElementById('back');
+const back = document.getElementById('back');
 const popup = document.getElementById('grassPopup');
 const popupImg = popup.querySelector('img');
 
 let currentLayer = front;
-let nextLayer    = back;
+let nextLayer = back;
 
 // 记录哪些图片真正“可用”（加载+解码成功）
 const availableImages = [];
 const preloaded = new Map(); // src => Image 对象
-
 let lastIndex = -1;
 let isFirst = true;
 
@@ -74,9 +71,8 @@ let isFirst = true;
 imagePaths.forEach((src, index) => {
   const img = new Image();
   img.loading = 'eager';
-  img.decoding = 'async';           // 异步解码，不卡主线程
+  img.decoding = 'async'; // 异步解码，不卡主线程
   img.src = src;
-
   img.decode()
     .then(() => {
       preloaded.set(src, img);
@@ -98,30 +94,26 @@ imagePaths.forEach((src, index) => {
 function startFastLoop() {
   setInterval(() => {
     if (availableImages.length === 0) return;
-
     let next;
     // 随机但不重复上一张
     do {
       next = availableImages[Math.floor(Math.random() * availableImages.length)];
     } while (availableImages.length > 1 && next.index === lastIndex);
-
     showImage(next);
     lastIndex = next.index;
   }, 80); // 80ms ≈ 12.5 FPS，极快且不闪烁！再低会卡
 }
+
 function showImage({src}) {
   const img = preloaded.get(src);
   if (!img) return;
-
   // 直接硬切！不等动画！
   nextLayer.src = src;
   nextLayer.classList.add('active');
   currentLayer.classList.remove('active');
-
   // 交换
   [currentLayer, nextLayer] = [nextLayer, currentLayer];
 }
-
 
 // 如果所有图都加载失败（极端情况），显示纯黑
 setTimeout(() => {
@@ -129,7 +121,9 @@ setTimeout(() => {
     document.getElementById('grass-player').style.background = 'black';
   }
 }, 8000);
+
 </script>
+
 
 
 <script>

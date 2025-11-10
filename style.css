@@ -349,8 +349,23 @@ button.close:hover {
 /* 把你现在的 #player 和 .layer 样式全部替换成下面这几行 */
 #grass-player {
   position: relative;
-  height: 150%
+  width: 100%;
+  height: 150%;
+  overflow: hidden;
 }
+#grass-player img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition:none ;
+}
+#grass-player img.active {
+  opacity: 1;
+}
+
 
 #grass-player .layer {
   opacity: 1;                  /* 默认就 100% 不透明！ */
