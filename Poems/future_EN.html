@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Ruoxi Wang</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+</head>
+<body>
+  <div class="container">
+     <div class="top-section">
+      <div id="sidebar" class="sidebar"></div>
+     <div id="rightbar" class="rightbar"></div>
+     </div>
+    <div class="main"> 
+   <div class="title-row">
+    <h2>The Reason not going to future / 不去未来的原因</h2>
+    <a href="/Poems/future_CN.html"> 中文版</a></div>
+<pre></pre>
+  </div>
+
+</main>
+
+
+
+  </div>
+
+  <script>
+    Promise.all([
+      fetch("../sidebar.html").then(r => r.text()),
+      fetch("../rightbar.html").then(r => r.text())
+    ]).then(([left, right]) => {
+      document.getElementById("sidebar").innerHTML = left;
+      document.getElementById("rightbar").innerHTML = right;
+    }).catch(err => console.error("加载sidebar失败：", err));
+  </script>
+</body>
+</html>
