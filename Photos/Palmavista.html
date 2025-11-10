@@ -15,7 +15,7 @@
     </div>   
      <div class="main">
    <h2>Palmavista / 棕榈角</h2>
-   
+
    <div class="gallery"> 
 <img src="/images/Palmavista/01.jpg" loading="lazy">
 <img src="/images/Palmavista/02.jpg" loading="lazy">
@@ -91,9 +91,8 @@
 }
 
 .lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 8px;
+  max-width: 100%;
+  max-height: 100%;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
@@ -121,7 +120,6 @@
   </script>
 
  <script>
-  if (window.innerWidth > 768) { 
 const galleryImages = document.querySelectorAll('.gallery img');
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
@@ -151,7 +149,7 @@ document.querySelector('.prev').addEventListener('click', () => {
 
 document.querySelector('.close').addEventListener('click', () => {
   lightbox.classList.remove('active');
-});}
+});
 </script>
 
 <script>
