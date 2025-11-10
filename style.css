@@ -419,22 +419,6 @@ button.close:hover {
   align-items: center;
 }
 
-@media (max-width: 768px) {
-  .grass-row {
-    flex-direction: column;  /* 改成上下排列 */
-    gap: 30px;
-    height: 100vh;           /* 可选：让它占满屏幕（按需要） */
-  }
-
-  #grass-player {
-    flex: 2;                 /* 占2份高度 */
-  }
-
-  .grass-right {
-    flex: 1;                 /* 占1份高度 */
-  }
-}
-
 
 /* 弹窗放大层（适度大小，非全屏）*/
 #grassPopup {
